@@ -1,0 +1,17 @@
+{% extends "core/base_app.html" %}
+{% block title %}Panelim{% endblock %}
+{% block content %}
+<div class="page-head"><div><h1>Merhaba, {{ request.user.first_name|default:request.user.username }}</h1><p>Üzerinize atanan işler.</p></div></div>
+<div class="stats">
+  <div class="stat"><div class="num">{{ active_count }}</div><div class="lbl">Aktif cihaz</div></div>
+  <div class="stat"><div class="num">{{ ready_count }}</div><div class="lbl">Teslime hazır</div></div>
+  <div class="stat"><div class="num">{{ pending_leaves }}</div><div class="lbl">Bekleyen izin talebim</div></div>
+</div>
+<section class="panel"><h2>Sıradaki cihazlar</h2>
+  {% if active_devices %}
+  <div class="table-wrap"><table><thead><tr><th>Takip no</th><th>Cihaz</th><th>Müşteri</th><th>Durum</th></tr></thead><tbody>
+  {% for d in active_devices %}<tr><td>{{ d.tracking_id }}</td><td>{{ d.brand }} {{ d.model }}</td><td>{{ d.customer_name }}</td><td><span class="badge">{{ d.get_status_display }}</span></td></tr>{% endfor %}
+  </tbody></table></div>
+  {% else %}<p class="empty">Size atanmış açık cihaz yok.</p>{% endif %}
+</section>
+{% endblock %}
