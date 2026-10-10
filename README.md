@@ -1,4 +1,4 @@
-# FIXLAB — Teknik Servis Yönetim Sistemi
+# FIXLAB — Teknik Servis Yönetim Sistemiii
 
 Django tabanlı teknik servis yönetim sistemi. Bu aşamada şunlar hazırdır:
 
